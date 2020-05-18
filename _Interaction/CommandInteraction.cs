@@ -27,9 +27,10 @@ namespace Terraria.Plugins.Common {
 
 
     public CommandInteraction(TSPlayer forPlayer) {
-      Contract.Requires<ArgumentNullException>(forPlayer != null);
+      //Contract.Requires<ArgumentNullException>(forPlayer != null);
+            if (forPlayer == null) throw new ArgumentNullException();
 
-      this.ForPlayer = forPlayer;
+            this.ForPlayer = forPlayer;
     }
 
     public void ResetTimer() {

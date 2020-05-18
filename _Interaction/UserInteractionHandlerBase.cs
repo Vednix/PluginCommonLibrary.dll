@@ -37,11 +37,14 @@ namespace Terraria.Plugins.Common {
       string[] names, CommandDelegate commandExec, Func<CommandArgs,bool> commandHelpExec = null, 
       string requiredPermission = null, bool allowServer = true, bool doLog = true
     ) {
-      Contract.Requires<ObjectDisposedException>(!this.IsDisposed);
-      Contract.Requires<ArgumentNullException>(names != null);
-      Contract.Requires<ArgumentNullException>(commandExec != null);
-      
-      CommandDelegate actualCommandExec;
+      //Contract.Requires<ObjectDisposedException>(!this.IsDisposed);
+      //Contract.Requires<ArgumentNullException>(names != null);
+      //Contract.Requires<ArgumentNullException>(commandExec != null);
+            if (this.IsDisposed) throw new ObjectDisposedException(this.isDisposed.ToString());
+            if (names == null) throw new ArgumentNullException();
+            if (commandExec == null) throw new ArgumentNullException();
+
+            CommandDelegate actualCommandExec;
       if (commandHelpExec != null) {
         actualCommandExec = (args) => {
           if (args.ContainsParameter("help", StringComparison.InvariantCultureIgnoreCase))
@@ -68,17 +71,20 @@ namespace Terraria.Plugins.Common {
     }
 
     protected void DeregisterCommand(Command tshockCommand) {
-      Contract.Requires<ArgumentNullException>(tshockCommand != null);
+      //Contract.Requires<ArgumentNullException>(tshockCommand != null);
+            if (tshockCommand == null) throw new ArgumentNullException();
 
-      if (!TShockAPI.Commands.ChatCommands.Contains(tshockCommand))
+            if (!TShockAPI.Commands.ChatCommands.Contains(tshockCommand))
         throw new InvalidOperationException("Command is not registered.");
     }
 
     protected CommandInteraction StartOrResetCommandInteraction(TSPlayer forPlayer, int timeoutMs = 0) {
-      Contract.Requires<ObjectDisposedException>(!this.IsDisposed);
-      Contract.Requires<ArgumentNullException>(forPlayer != null);
+      //Contract.Requires<ObjectDisposedException>(!this.IsDisposed);
+            if (this.IsDisposed) throw new ObjectDisposedException(this.IsDisposed.ToString());
+            //Contract.Requires<ArgumentNullException>(forPlayer != null);
+            if (forPlayer == null) throw new ArgumentNullException();
 
-      CommandInteraction newInteraction = new CommandInteraction(forPlayer);
+            CommandInteraction newInteraction = new CommandInteraction(forPlayer);
 
       lock (this.activeCommandInteractionsLock) {
         this.StopInteraction(forPlayer);
@@ -135,8 +141,10 @@ namespace Terraria.Plugins.Common {
     }
 
     protected void StopInteraction(TSPlayer forPlayer) {
-      Contract.Requires<ObjectDisposedException>(!this.IsDisposed);
-      Contract.Requires<ArgumentNullException>(forPlayer != null);
+      //Contract.Requires<ObjectDisposedException>(!this.IsDisposed);
+            if (this.isDisposed) throw new ObjectDisposedException(this.isDisposed.ToString());
+      //Contract.Requires<ArgumentNullException>(forPlayer != null);
+            if (forPlayer == null) throw new ArgumentNullException();
 
       lock (this.activeCommandInteractionsLock) {
         CommandInteraction interaction;

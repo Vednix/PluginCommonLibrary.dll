@@ -18,10 +18,12 @@ namespace Terraria.Plugins.Common {
 
 
     protected DatabaseHandlerBase(string sqliteDatabaseFilePath) {
-      Contract.Requires<ArgumentNullException>(sqliteDatabaseFilePath != null);
-      Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(sqliteDatabaseFilePath));
+      //Contract.Requires<ArgumentNullException>(sqliteDatabaseFilePath != null);
+            if (sqliteDatabaseFilePath == null) throw new ArgumentNullException();
+      //Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(sqliteDatabaseFilePath));
+            if (string.IsNullOrWhiteSpace(sqliteDatabaseFilePath)) throw new ArgumentException();
 
-      this.sqliteDatabaseFilePath = sqliteDatabaseFilePath;
+            this.sqliteDatabaseFilePath = sqliteDatabaseFilePath;
     }
 
     public void EstablishConnection() {

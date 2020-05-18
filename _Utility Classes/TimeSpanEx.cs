@@ -12,9 +12,10 @@ namespace Terraria.Plugins.Common {
     );
 
     public static bool TryParseShort(string input, out TimeSpan result) {
-      Contract.Requires<ArgumentNullException>(input != null);
+      //Contract.Requires<ArgumentNullException>(input != null);
+            if (input == null) throw new ArgumentNullException();
 
-      result = TimeSpan.Zero;
+            result = TimeSpan.Zero;
       if (string.IsNullOrWhiteSpace(input))
         return false;
       

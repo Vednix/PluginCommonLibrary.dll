@@ -38,7 +38,8 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<TileEditEventArgs> TileEdit;
 
     protected virtual bool OnTileEdit(TileEditEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
       try {
         if (this.TileEdit != null)
@@ -56,9 +57,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<ObjectPlacementEventArgs> ObjectPlacement;
 
     protected virtual bool OnObjectPlacement(ObjectPlacementEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.ObjectPlacement != null)
           this.ObjectPlacement(this, e);
       } catch (Exception ex) {
@@ -74,9 +76,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<ChestPlaceEventArgs> ChestPlace;
 
     protected virtual bool OnChestPlace(ChestPlaceEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.ChestPlace != null)
           this.ChestPlace(this, e);
       } catch (Exception ex) {
@@ -92,9 +95,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<ChestOpenEventArgs> ChestOpen;
 
     protected virtual bool OnChestOpen(ChestOpenEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.ChestOpen != null)
           this.ChestOpen(this, e);
       } catch (Exception ex) {
@@ -110,9 +114,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<ChestRenameEventArgs> ChestRename;
 
     protected virtual bool OnChestRename(ChestRenameEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+            //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.ChestRename != null)
           this.ChestRename(this, e);
       } catch (Exception ex) {
@@ -128,9 +133,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<TileLocationEventArgs> ChestKill;
 
     protected virtual bool OnChestKill(TileLocationEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.ChestKill != null)
           this.ChestKill(this, e);
       } catch (Exception ex) {
@@ -146,9 +152,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<TileLocationEventArgs> ChestGetContents;
 
     protected virtual bool OnChestGetContents(TileLocationEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.ChestGetContents != null)
           this.ChestGetContents(this, e);
       } catch (Exception ex) {
@@ -164,9 +171,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<ChestModifySlotEventArgs> ChestModifySlot;
 
     protected virtual bool OnChestModifySlot(ChestModifySlotEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
-      
-      try {
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
+
+            try {
         if (this.ChestModifySlot != null)
           this.ChestModifySlot(this, e);
       } catch (Exception ex) {
@@ -182,9 +190,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<SignEditEventArgs> SignEdit;
 
     protected virtual bool OnSignEdit(SignEditEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
-      
-      try {
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
+
+            try {
         if (this.SignEdit != null)
           this.SignEdit(this, e);
       } catch (Exception ex) {
@@ -200,9 +209,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<TileLocationEventArgs> SignRead;
 
     protected virtual bool OnSignRead(TileLocationEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.SignRead != null)
           this.SignRead(this, e);
       } catch (Exception ex) {
@@ -218,9 +228,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<TileLocationEventArgs> HitSwitch;
 
     protected virtual bool OnHitSwitch(TileLocationEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
-      
-      try {
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
+
+            try {
         if (this.HitSwitch != null)
           this.HitSwitch(this, e);
       } catch (Exception ex) {
@@ -236,9 +247,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<BossSpawnEventArgs> BossSpawn;
 
     protected virtual bool OnBossSpawn(BossSpawnEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
-      
-      try {
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
+
+            try {
         if (this.BossSpawn != null)
           this.BossSpawn(this, e);
       } catch (Exception ex) {
@@ -254,9 +266,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<ItemUpdateEventArgs> ItemUpdate;
 
     protected virtual bool OnItemUpdate(ItemUpdateEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
-      
-      try {
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
+
+            try {
         if (this.ItemUpdate != null)
           this.ItemUpdate(this, e);
       } catch (Exception ex) {
@@ -272,9 +285,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<ItemOwnerEventArgs> ItemOwner;
 
     protected virtual bool OnItemOwner(ItemOwnerEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
-      
-      try {
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
+
+            try {
         if (this.ItemOwner != null)
           this.ItemOwner(this, e);
       } catch (Exception ex) {
@@ -290,9 +304,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<PlayerSlotEventArgs> QuickStackNearby;
 
     protected virtual bool OnQuickStackNearby(PlayerSlotEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.QuickStackNearby != null)
           this.QuickStackNearby(this, e);
       } catch (Exception ex) {
@@ -308,9 +323,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<PlayerModifySlotEventArgs> PlayerModifySlot;
 
     protected virtual bool OnPlayerModifySlot(PlayerModifySlotEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.PlayerModifySlot != null)
           this.PlayerModifySlot(this, e);
       } catch (Exception ex) {
@@ -326,9 +342,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<LiquidSetEventArgs> LiquidSet;
 
     protected virtual bool OnLiquidSet(LiquidSetEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
-      
-      try {
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
+
+            try {
         if (this.LiquidSet != null)
           this.LiquidSet(this, e);
       } catch (Exception ex) {
@@ -344,9 +361,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<DoorUseEventArgs> DoorUse;
 
     protected virtual bool OnDoorUse(DoorUseEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.DoorUse != null)
           this.DoorUse(this, e);
       } catch (Exception ex) {
@@ -378,9 +396,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<TileLocationEventArgs> ChestUnlock;
 
     protected virtual bool OnChestUnlock(TileLocationEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.ChestUnlock != null)
           this.ChestUnlock(this, e);
       } catch (Exception ex) {
@@ -396,9 +415,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<ChatTextEventArgs> ChatText;
 
     protected virtual bool OnChatText(ChatTextEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.ChatText != null)
           this.ChatText(this, e);
       } catch (Exception ex) {
@@ -414,9 +434,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<SendTileSquareEventArgs> SendTileSquare;
 
     protected virtual bool OnSendTileSquare(SendTileSquareEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.SendTileSquare != null)
           this.SendTileSquare(this, e);
       } catch (Exception ex) {
@@ -432,9 +453,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<TilePaintEventArgs> TilePaint;
 
     protected virtual bool OnTilePaint(TilePaintEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.TilePaint != null)
           this.TilePaint(this, e);
       } catch (Exception ex) {
@@ -468,9 +490,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<TeleportEventArgs> Teleport;
 
     protected virtual bool OnTeleport(TeleportEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         if (this.Teleport != null)
           this.Teleport(this, e);
       } catch (Exception ex) {
@@ -486,9 +509,10 @@ namespace Terraria.Plugins.Common.Hooks {
     public event EventHandler<NpcTookDamageEventArgs> NpcTookDamage;
 
     protected virtual bool OnNpcTookDamage(NpcTookDamageEventArgs e) {
-      Contract.Requires<ArgumentNullException>(e != null);
+      //Contract.Requires<ArgumentNullException>(e != null);
+            if (e == null) throw new ArgumentNullException();
 
-      try {
+            try {
         this.NpcTookDamage?.Invoke(this, e);
       } catch (Exception ex) {
         this.ReportEventHandlerException("NpcTookDamage", ex);
@@ -518,7 +542,8 @@ namespace Terraria.Plugins.Common.Hooks {
 
 
     public GetDataHookHandler(TerrariaPlugin plugin, bool invokeTileEditOnChestKill = false, int hookPriority = 0) {
-      Contract.Requires<ArgumentNullException>(plugin != null);
+      //Contract.Requires<ArgumentNullException>(plugin != null);
+            if (plugin == null) throw new ArgumentNullException();
 
       this.Plugin = plugin;
       this.InvokeTileEditOnChestKill = invokeTileEditOnChestKill;

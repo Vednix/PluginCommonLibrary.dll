@@ -42,10 +42,12 @@ namespace Terraria.Plugins.Common.Collections {
     public PlayerDataDictionary(
       TerrariaPlugin plugin, Func<int,DataType> playerDataFactoryFunction, bool addPlayersAfterLoginOnly = true, bool registerHooks = false
     ) {
-      Contract.Requires<ArgumentNullException>(plugin != null);
-      Contract.Requires<ArgumentNullException>(playerDataFactoryFunction != null);
+      //Contract.Requires<ArgumentNullException>(plugin != null);
+            if (plugin == null) throw new ArgumentNullException();
+            //Contract.Requires<ArgumentNullException>(playerDataFactoryFunction != null);
+            if (playerDataFactoryFunction == null) throw new ArgumentNullException();
 
-      this.dataList = new List<DataType>(new DataType[100]);
+            this.dataList = new List<DataType>(new DataType[100]);
       this.owningPlugin = plugin;
       this.addAfterLogin = addPlayersAfterLoginOnly;
       this.PlayerDataFactoryFunction = playerDataFactoryFunction;

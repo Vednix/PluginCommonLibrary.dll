@@ -18,14 +18,16 @@ namespace Terraria.Plugins.Common.Collections {
     public IList<ItemData> Items { get; }
 
     public Inventory(ItemsAdapter items, bool specificPrefixes = true): this(items as IList<ItemData>, specificPrefixes) {
-      Contract.Requires<ArgumentNullException>(items != null);
-    }
+      //Contract.Requires<ArgumentNullException>(items != null);
+            if (items == null) throw new ArgumentNullException();
+        }
 
     /// <param name="specificPrefixes">if set to <c>true</c> items will considered equal if their prefixes match. set to <c>false</c> to ignore prefixes.</param>
     public Inventory(IList<ItemData> items, bool specificPrefixes = true) {
-      Contract.Requires<ArgumentNullException>(items != null);
+      //Contract.Requires<ArgumentNullException>(items != null);
+            if (items == null) throw new ArgumentNullException();
 
-      this.Items = items;
+            this.Items = items;
       this.specificPrefixes = specificPrefixes;
     }
 
@@ -37,9 +39,10 @@ namespace Terraria.Plugins.Common.Collections {
     /// <param name="itemToTake">The item to take.</param>
     /// <param name="itemToGive">The item to give.</param>
     public void Exchange(ItemData?[] updates, ItemData itemToTake, ItemData itemToGive) {
-      Contract.Requires<ArgumentNullException>(updates != null);
+      //Contract.Requires<ArgumentNullException>(updates != null);
+            if (updates == null) throw new ArgumentNullException();
 
-      this.Remove(updates, (int)itemToTake.Type, itemToTake.StackSize, (int)itemToTake.Prefix);
+            this.Remove(updates, (int)itemToTake.Type, itemToTake.StackSize, (int)itemToTake.Prefix);
       this.Add(updates, (int)itemToGive.Type, itemToGive.StackSize, (int)itemToGive.Prefix);
     }
 
@@ -53,11 +56,14 @@ namespace Terraria.Plugins.Common.Collections {
     public void Add(ItemData?[] updates, ItemData item) => this.Add(updates, (int)item.Type, item.StackSize, (int)item.Prefix);
 
     public void Add(ItemData?[] updates, int itemType, int stack, int prefixType = -1) {
-      Contract.Requires<ArgumentNullException>(updates != null);
-      Contract.Requires<ArgumentOutOfRangeException>(updates.Length == this.Items.Count);
-      Contract.Requires<ArgumentException>(stack > 0);
+      //Contract.Requires<ArgumentNullException>(updates != null);
+            if (updates == null) throw new ArgumentNullException();
+            //Contract.Requires<ArgumentOutOfRangeException>(updates.Length == this.Items.Count);
+            if (updates.Length != this.Items.Count) throw new ArgumentOutOfRangeException();
+            //Contract.Requires<ArgumentException>(stack > 0);
+            if (stack < 0) throw new ArgumentException();
 
-      Item itemInfo = new Item();
+            Item itemInfo = new Item();
       itemInfo.netDefaults(itemType);
 
       if (stack > itemInfo.maxStack)
@@ -118,11 +124,14 @@ namespace Terraria.Plugins.Common.Collections {
     public void Remove(ItemData?[] updates, ItemData item) => this.Remove(updates, (int)item.Type, item.StackSize, (int)item.Prefix);
 
     public void Remove(ItemData?[] updates, int itemType, int stack, int prefixType = 0) {
-      Contract.Requires<ArgumentNullException>(updates != null);
-      Contract.Requires<ArgumentOutOfRangeException>(updates.Length == this.Items.Count);
-      Contract.Requires<ArgumentException>(stack > 0);
+      //Contract.Requires<ArgumentNullException>(updates != null);
+            if (updates == null) throw new ArgumentNullException();
+            //Contract.Requires<ArgumentOutOfRangeException>(updates.Length == this.Items.Count);
+            if (updates.Length != this.Items.Count) throw new ArgumentOutOfRangeException();
+            //Contract.Requires<ArgumentException>(stack > 0);
+            if (stack <= 0) throw new ArgumentException();
 
-      Item itemInfo = new Item();
+            Item itemInfo = new Item();
       itemInfo.netDefaults(itemType);
 
       // would never need more than one empty slot
@@ -176,16 +185,18 @@ namespace Terraria.Plugins.Common.Collections {
     }
 
     public void ApplyUpdates(ItemData?[] updates) {
-      Contract.Requires<ArgumentNullException>(updates != null);
+      //Contract.Requires<ArgumentNullException>(updates != null);
+            if (updates == null) throw new ArgumentNullException();
 
-      ApplyUpdatesTo(updates, this.Items);
+            ApplyUpdatesTo(updates, this.Items);
     }
 
     public static void ApplyUpdatesTo(ItemData?[] updates, IList<ItemData> destinationInventory) {
-      Contract.Requires<ArgumentNullException>(updates != null);
+      //Contract.Requires<ArgumentNullException>(updates != null);
+            if (updates == null) throw new ArgumentNullException();
 
-      // apply all the changes
-      for (int i = 0; i < updates.Length; i++) {
+            // apply all the changes
+            for (int i = 0; i < updates.Length; i++) {
         ItemData? updateItem = updates[i];
         if (updateItem != null) {
           if (updateItem.Value.StackSize > 0)

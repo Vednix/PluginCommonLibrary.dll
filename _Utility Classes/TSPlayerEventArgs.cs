@@ -10,9 +10,10 @@ namespace Terraria.Plugins.Common {
 
 
     public TSPlayerEventArgs(TSPlayer tsPlayer) {
-      Contract.Requires<ArgumentNullException>(tsPlayer != null);
+      //Contract.Requires<ArgumentNullException>(tsPlayer != null);
+            if (tsPlayer == null) throw new ArgumentNullException();
 
-      this.TSPlayer = tsPlayer;
+            this.TSPlayer = tsPlayer;
     }
   }
 }

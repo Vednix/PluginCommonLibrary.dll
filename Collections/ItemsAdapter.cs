@@ -16,11 +16,14 @@ namespace Terraria.Plugins.Common.Collections {
     protected readonly int toIndex;
 
     public ItemsAdapter(Item[] itemArray, int fromIndex = 0, int toIndex = 0) {
-      Contract.Requires<ArgumentNullException>(itemArray != null);
-      Contract.Requires<ArgumentException>(itemArray.Length > 0);
-      Contract.Requires<ArgumentOutOfRangeException>(fromIndex <= toIndex);
+      //Contract.Requires<ArgumentNullException>(itemArray != null);
+            if (itemArray == null) throw new ArgumentNullException();
+            //Contract.Requires<ArgumentException>(itemArray.Length > 0);
+            if (itemArray.Length <= 0) throw new ArgumentException();
+            //Contract.Requires<ArgumentOutOfRangeException>(fromIndex <= toIndex);
+            if (fromIndex > toIndex) throw new ArgumentOutOfRangeException();
 
-      this.itemArray = itemArray;
+            this.itemArray = itemArray;
       this.fromIndex = fromIndex;
       this.toIndex = toIndex > 0 ? toIndex : itemArray.Length - 1;
     }

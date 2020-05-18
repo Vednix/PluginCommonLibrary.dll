@@ -16,8 +16,9 @@ namespace Terraria.Plugins.Common {
     public PaymentException(int paymentAmount): base(
       $"The user is missing the required {paymentAmount} of SEconomy currency to perform this action."
     ) {
-      Contract.Requires<ArgumentException>(paymentAmount > 0);
-      this.PaymentAmount = paymentAmount;
+      //Contract.Requires<ArgumentException>(paymentAmount > 0);
+            if (paymentAmount <= 0 ) throw new ArgumentException();
+            this.PaymentAmount = paymentAmount;
     }
 
     public PaymentException(string message, Exception inner = null): base(message, inner) {}

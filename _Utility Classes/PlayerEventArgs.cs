@@ -8,9 +8,10 @@ namespace Terraria.Plugins.Common {
 
 
     public PlayerEventArgs(Player tPlayer) {
-      Contract.Requires<ArgumentNullException>(tPlayer != null);
+      //Contract.Requires<ArgumentNullException>(tPlayer != null);
+            if (tPlayer == null) throw new ArgumentNullException();
 
-      this.TPlayer = tPlayer;
+            this.TPlayer = tPlayer;
     }
   }
 }
